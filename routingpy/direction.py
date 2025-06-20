@@ -116,10 +116,20 @@ class Direction(object):
 
     @property
     def km(self) -> float:
+        """
+        The distance of the entire trip in kilometers.
+
+        :rtype: float
+        """
         return self.distance / 1000
 
     @property
     def mi(self) -> float:
+        """
+        The distance of the entire trip in miles.
+
+        :rtype: float
+        """
         return self.distance * 0.0006213712
 
     @property
