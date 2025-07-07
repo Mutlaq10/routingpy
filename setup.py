@@ -40,7 +40,7 @@ setup(
     maintainer="Matthieu Viry",
     maintainer_email="matthieu.viry@cnrs.fr",
     python_requires=">=3.9.0",
-    url="https://github.com/gis-ops/routing-py",
+    url="https://github.com/mthh/routingpy",
     packages=find_packages(exclude=["*tests*"]),
     install_requires=["requests>=2.20.0"],
     license="Apache 2.0",
