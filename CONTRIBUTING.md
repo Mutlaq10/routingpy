@@ -3,7 +3,7 @@
 Thanks for considering to make a contribution to the vast landscape of routing engine APIs. We'd be really happy to
 eventually be able to cover all remote open source routing API's, but have to rely on community contributions as this is a big task.
 
-> Note: when this project first came about, the goal was to support commercial and open source APIs. This has since changed and we only focus on the open source ones these days, eventually phasing out the commercial ones as they grow stale.
+> Note: when this project first came about, the goal was to support commercial and open source APIs. This has since changed, and we only focus on the open source ones these days, eventually phasing out the commercial ones as they grow stale.
 
 ## Table of Contents
 
@@ -43,16 +43,16 @@ When contributing, we expect you to:
 
 ### Setup
 
-Required: Python 3.9 or higher, `poetry` and `git`.
+Required: Python 3.9 or higher, [`poetry`](https://github.com/python-poetry/poetry) and `git`.
 
-0. Clone the repository:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/mthh/routingpy
 cd routingpy
 ```
 
-1. Create and activate a new virtual environment:
+2. Create and activate a new virtual environment:
 
 ```bash
 # From the root of your git project
@@ -60,21 +60,21 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-2. Install development dependencies:
+3. Install development dependencies:
 
 ```bash
 # From the root of your git project
-poetry install
+poetry install --with dev
 ```
 
-3. Run tests to check if all goes well:
+4. Run tests to check if all goes well:
 
 ```bash
 # From the root of your git project
 pytest -v
 ```
 
-4. Please install the pre-commit hook, so your code gets auto-formatted and linted before committing it:
+5. Please install the pre-commit hook, so your code gets auto-formatted and linted before committing it:
 
 ```bash
 # From the root of your git project
@@ -123,7 +123,7 @@ It's really easy:
 
 2. **Implementations** Implement the services the routing engine has to offer. The bare minimum is implementing the `directions` method.
    If the routing engine also offers `isochrones` and `matrix`, we'd require you to add those too. If you want to add an
-   endpoint that doesn't exist yet in `routingpy/routers/base.py:Router`, please [consult us first](mailto:enquiry@gis-ops.com?subject=contributing%20to%20routingpy), as we need to make sure
+   endpoint that doesn't exist yet in `routingpy/routers/base.py:Router`, please [consult us first](https://github.com/mthh/routingpy/issues), as we need to make sure
    to be similarly consistent across different routing engines as we are with the existing endpoints.
 
 3. **Tests** Create a new test module testing the functionality, **not** the API.
