@@ -20,7 +20,7 @@ Core client functionality, common across all routers.
 
 
 try:
-    from .__version__ import __version__
+    from . import __version__
 except (ModuleNotFoundError, ImportError):
     __version__ = "None"
 
