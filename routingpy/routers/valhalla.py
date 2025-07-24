@@ -330,8 +330,6 @@ class Valhalla:
             will be filled automatically. For more information, visit:
             https://valhalla.github.io/valhalla/api/turn-by-turn/api-reference/#costing-options
 
-        :param units: Distance units for output. One of ['mi', 'km']. Default km.
-
         :param language: The language of the narration instructions based on the IETF BCP 47 language tag string.
             One of ['ca', 'cs', 'de', 'en', 'pirate', 'es', 'fr', 'hi', 'it', 'pt', 'ru', 'sl', 'sv']. Default 'en'.
 
@@ -663,18 +661,19 @@ class Valhalla:
     ) -> Expansions:
         """Gets the expansion tree for a range of time or distance values around a given coordinate.
 
-        For more information, visit https://valhalla.readthedocs.io/en/latest/api/expansion/api-reference/.
+        For more information, visit https://valhalla.github.io/valhalla/api/expansion/api-reference/.
 
         :param locations: One pair of lng/lat values. Takes the form [Longitude, Latitude].
 
         :param profile: Specifies the mode of transport to use when calculating
-            directions. One of ["auto", "bicycle", "multimodal", "pedestrian".
+            directions. One of ["auto", "bicycle", "multimodal", "pedestrian"].
 
         :param intervals: Time ranges to calculate isochrones for. In seconds or meters, depending on `interval_type`.
 
         :param skip_opposites: If set to true the output won't contain an edge's opposing edge. Opposing edges can be thought of as both directions of one road segment. Of the two, we discard the directional edge with higher cost and keep the one with less cost.
 
-        :param expansion_properties: A JSON array of strings of the GeoJSON property keys you'd like to have in the response. One or multiple of "durations", "distances", "costs", "edge_ids", "statuses". Note, that each additional property will increase the output size by minimum ~ 25%.
+        :param expansion_properties: A JSON array of strings of the GeoJSON property keys you'd like to have in the response.
+            One or multiple of "duration", "distance", "cost", "edge_id", "pre_edge_id", "edge_status". Note, that each additional property will increase the output size by minimum ~ 10%.
 
         :param interval_type: Set 'time' for isochrones or 'distance' for equidistants.
             Default 'time'.
@@ -690,7 +689,7 @@ class Valhalla:
 
             E.g. date_time = {type: 0, value: 2021-03-03T08:06}
 
-        :param id: Name your route request. If id is specified, the naming will be sent thru to the response.
+        :param id: Name your route request. If id is specified, the naming will be sent through to the response.
 
         :param dry_run: Print URL and parameters without sending the request.
 
@@ -750,17 +749,16 @@ class Valhalla:
 
     @staticmethod
     def parse_expansion_json(response, locations, expansion_properties, interval_type):
-        if response is None:  # pragma: no cover
+        if response is None or "features" not in response:  # pragma: no cover
             return Expansions()
 
         expansions = []
-        for idx, line in enumerate(response["features"][0]["geometry"]["coordinates"]):
+        for feature in response["features"]:
+            line = feature["geometry"]["coordinates"]
             properties = {}
             if expansion_properties:
                 for expansion_prop in expansion_properties:
-                    properties[expansion_prop] = response["features"][0]["properties"][expansion_prop][
-                        idx
-                    ]
+                    properties[expansion_prop] = feature["properties"][expansion_prop]
             expansions.append(Edge(geometry=line, **properties))
 
         return Expansions(expansions, locations, interval_type, response)
@@ -785,7 +783,7 @@ class Valhalla:
 
         :param locations: One pair of lng/lat values or :class:`Waypoint`. Takes the form [Longitude, Latitude].
         :param profile: Specifies the mode of transport to use when calculating
-            directions. One of ["auto", "bicycle", "multimodal", "pedestrian".
+            directions. One of ["auto", "bicycle", "multimodal", "pedestrian"].
         :param shape_match: It allows some control of the matching algorithm based on the type of input. One of
             ["edge_walk", "map_snap", "walk_or_snap"]. See for full reference:
             https://valhalla.github.io/valhalla/api/map-matching/api-reference/#shape-matching-parameters

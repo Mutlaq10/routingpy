@@ -23,18 +23,27 @@ from typing import List, Optional, Tuple, Union
 class Edge:
     """
     Contains a parsed single line string of an edge and its attributes, if specified in the request.
-    Access via properties ``geometry``, ``distances`` ``durations``, ``costs``, ``edge_ids``, ``statuses``.
+    Access via properties ``geometry``, ``distance`` ``duration``, ``cost``, ``edge_id``,
+    ``pred_edge_id``, ``edge_status``.
     """
 
     def __init__(
-        self, geometry=None, distances=None, durations=None, costs=None, edge_ids=None, statuses=None
+        self,
+        geometry=None,
+        distance=None,
+        duration=None,
+        cost=None,
+        edge_id=None,
+        pred_edge_id=None,
+        edge_status=None,
     ):
         self._geometry = geometry
-        self._distance = distances
-        self._duration = durations
-        self._cost = costs
-        self._edge_id = edge_ids
-        self._status = statuses
+        self._distance = distance
+        self._duration = duration
+        self._cost = cost
+        self._edge_id = edge_id
+        self._pred_edge_id = pred_edge_id
+        self._status = edge_status
 
     @property
     def geometry(self) -> Optional[List[List[float]]]:
@@ -80,6 +89,15 @@ class Edge:
         :rtype: int or None
         """
         return self._edge_id
+
+    @property
+    def pred_edge_id(self) -> Optional[int]:
+        """
+        The predecessor edge IDs for each edge in order of graph traversal.
+
+        :rtype: int or None
+        """
+        return self._pred_edge_id
 
     @property
     def status(self) -> Optional[str]:

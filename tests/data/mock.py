@@ -89,34 +89,130 @@ ENDPOINTS_RESPONSES = {
             ]
         },
         "expansion": {
-            "properties": {"algorithm": "unidirectional_dijkstra"},
             "type": "FeatureCollection",
             "features": [
                 {
                     "type": "Feature",
                     "geometry": {
-                        "type": "MultiLineString",
-                        "coordinates": [
-                            [[0.00027, -0.00017], [0.00027, 0.0]],
-                            [[0.00027, -0.00017], [0.00027, -0.00035]],
-                            [[0.00027, -0.00035], [0.00027, -0.00017]],
-                            [[0.00027, 0.0], [0.00027, -0.00017]],
-                            [[0.00027, -0.00017], [0.00053, -0.00017]],
-                            [[0.00027, -0.00017], [0.0, -0.00017]],
-                            [[0.0, -0.00017], [0.00027, -0.00017]],
-                            [[0.00053, -0.00017], [0.0008, -0.00017]],
-                            [[0.0008, -0.00017], [0.00053, -0.00017]],
-                            [[0.00053, -0.00017], [0.00027, -0.00017]],
-                            [[0.00053, -0.00017], [0.0008, 0.0]],
-                        ],
+                        "type": "LineString",
+                        "coordinates": [[8.512978, 47.380938], [8.512694, 47.380651]],
                     },
-                    "properties": {
-                        "distances": [20, 20, 40, 40, 30, 30, 60, 60, 90, 120, 80],
-                        "durations": [0, 0, 29, 29, 1, 1, 30, 2, 31, 33, 5],
-                        "costs": [0, 0, 1, 1, 1, 1, 2, 2, 3, 4, 11],
+                    "properties": {"duration": 0, "distance": 0, "cost": 0},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.512694, 47.380651], [8.512589, 47.380545]],
                     },
-                }
+                    "properties": {"duration": 4, "distance": 14, "cost": 8},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.512694, 47.380651], [8.512978, 47.380938]],
+                    },
+                    "properties": {"duration": 7, "distance": 37, "cost": 8},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.512978, 47.380938], [8.513163, 47.381124]],
+                    },
+                    "properties": {"duration": 11, "distance": 62, "cost": 14},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.512589, 47.380545], [8.512461, 47.380427]],
+                    },
+                    "properties": {"duration": 7, "distance": 30, "cost": 16},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.512461, 47.380427], [8.512249, 47.380203]],
+                    },
+                    "properties": {"duration": 15, "distance": 60, "cost": 28},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.513163, 47.381124], [8.513588, 47.381568]],
+                    },
+                    "properties": {"duration": 23, "distance": 121, "cost": 28},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.513588, 47.381568], [8.513632, 47.381613]],
+                    },
+                    "properties": {"duration": 24, "distance": 127, "cost": 35},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.513632, 47.381613], [8.514038, 47.382042]],
+                    },
+                    "properties": {"duration": 34, "distance": 184, "cost": 48},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.512249, 47.380203], [8.51156, 47.379499]],
+                    },
+                    "properties": {"duration": 33, "distance": 154, "cost": 49},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.512978, 47.380938], [8.512871, 47.380983]],
+                    },
+                    "properties": {"duration": 17, "distance": 47, "cost": 644},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.512871, 47.380983], [8.512795, 47.381015]],
+                    },
+                    "properties": {"duration": 21, "distance": 54, "cost": 663},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.513632, 47.381613], [8.513528, 47.381658]],
+                    },
+                    "properties": {"duration": 31, "distance": 136, "cost": 667},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.512795, 47.381015], [8.512679, 47.381069]],
+                    },
+                    "properties": {"duration": 27, "distance": 65, "cost": 673},
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[8.512679, 47.381069], [8.512116, 47.381319]],
+                    },
+                    "properties": {"duration": 56, "distance": 122, "cost": 712},
+                },
             ],
+            "properties": {"algorithm": "dijkstras"},
         },
         "trace_attributes": {
             "shape": "qekg}Aq|hqOhIvcBjHo@`]iCFnBbCSh@AlACz@CTCdCvc@vCnl@j@`PjAnTDp@HlBLrBBZpB`b@lBb]~AfZx@`MxWeEDv@FnAFzALz@f@Gt@GzPniBPrC|@Od@MvLgDdWmGjG{C~@v@TpB^?t@CjBMj@I@}@L]RQhAcAxCr@nCx@nCN~UpHrEv@rSrEbZhGFbV",
@@ -1101,9 +1197,9 @@ ENDPOINTS_QUERIES = {
             "preference": "shortest",
         },
         "expansion": {
-            "expansion_properties": ["distances", "durations", "costs"],
-            "intervals": [60],
-            "locations": [(0.00026949361342338066, -0.00017966240895360996)],
+            "expansion_properties": ["distance", "duration", "cost"],
+            "intervals": [30],
+            "locations": [(8.512516, 47.380742)],
             "profile": "auto",
         },
         "trace_attributes": {
@@ -1249,9 +1345,9 @@ ENDPOINTS_EXPECTED = {
             "units": "km",
         },
         "expansion": {
-            "expansion_properties": ["distances", "durations", "costs"],
-            "contours": [{"time": 1.0}],
-            "locations": [{"lon": 0.00026949361342338066, "lat": -0.00017966240895360996}],
+            "expansion_properties": ["distance", "duration", "cost"],
+            "contours": [{"time": 0.5}],
+            "locations": [{"lon": 8.512516, "lat": 47.380742}],
             "costing": "auto",
             "action": "isochrone",
         },
