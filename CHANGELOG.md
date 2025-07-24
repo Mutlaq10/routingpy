@@ -13,12 +13,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added a `km` and a `mi` property to `Direction` class to get the distance in kilometers and miles ([#139](https://github.com/gis-ops/routingpy/issues/139)).
   Distance stored in `Direction.distance` are always in meters.
 
+- Added a `pred_edge_id` property to `Edge` class that is used in `Expansions`.
+
 ### Fixed
 
 - Fixes taking into account the `preference` parameter when calculating isochrones and matrix with Valhalla ([#120](https://github.com/gis-ops/routingpy/issues/120))
 - Google's matrix checks each response element's status code ([#122](https://github.com/gis-ops/routingpy/pull/122))
 - Fixed type hint on `Matrix.distances` and `Matrix.durations` ([#132](https://github.com/mthh/routingpy/pull/132))
 - Added missing support for `kwargs` to Valhalla's `matrix` creation function ([#135](https://github.com/mthh/routingpy/pull/135))
+- Fixed Valhalla's `expansion` method to follow the latest Valhalla API changes ([#142](https://github.com/mthh/routingpy/pull/142))
 
 ### Removed
 
