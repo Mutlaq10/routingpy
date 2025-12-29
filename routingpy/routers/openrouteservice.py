@@ -323,8 +323,16 @@ class ORS:
                     routes.append(
                         Direction(
                             geometry=route["geometry"]["coordinates"],
-                            distance=int(route["properties"]["summary"]["distance"]),
-                            duration=int(route["properties"]["summary"]["duration"]),
+                            distance=(
+                                int(route["properties"]["summary"]["distance"])
+                                if route["properties"]["summary"]
+                                else 0
+                            ),
+                            duration=(
+                                int(route["properties"]["summary"]["duration"])
+                                if route["properties"]["summary"]
+                                else 0
+                            ),
                             raw=route,
                         )
                     )
